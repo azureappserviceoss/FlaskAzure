@@ -6,11 +6,10 @@ class Directory(object):
 	request = requests.get('https://apis.scottylabs.org/directory/v1/andrewID/' + andrewID)
 	self.person = ast.literal_eval(request.content)
 	
-  def getName(self):
-    return self.person.get("first_name")
+  #returns a dictionary with the given fields
+  def getInfo(self, fields=[]):
+    return {k:self.person.get(k) for k in fields}
 	
-  def getEmail(self):
-    return self.person.get("preferred_email")
   
   
     
