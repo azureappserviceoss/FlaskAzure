@@ -254,23 +254,51 @@
         </div>
     </section>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-              <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-  </div>
-</div>
+	<div id="list_me" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog modal-md" role="document">
+			<div class="modal-content">
+				 <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form" 
+						action="/db_add" method="post">
+						<div class="form-group">
+							<label class="control-label col-md-2" for="andrewID">andrewID:</label>
+							<div class="col-md-10">
+							<input id="andrewID" type="text" name="name" class="form-control" required>
+						</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="skill">Skill:</label>
+							<div class="col-md-10">
+							<input id="skill" type="text" name="skill" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="skill">I want to: </label>
+							<div class="col-md-10">
+								<div class="checkbox">
+								  <input type="checkbox" name="teach"> Teach
+								</div>
+								<div class="checkbox">
+								  <input type="checkbox" name="help_others"> Help Others Practice
+								</div>
+								<div class="checkbox">
+								  <input type="checkbox" name="have_conversation"> Have a Conversation
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			  </div>
+			</div>
+	  </div>
+	</div>
 
     <section id="offer">
         <div class="container">
@@ -280,7 +308,7 @@
                     <hr class="primary">
                     <p>Got a skill you want to share? Let the world know about it!</p>
                   </div>
-                  <button type="button" class="btn btn-primary col-lg-offset-2 text-center" data-toggle="modal" data-target=".bs-example-modal-sm">List Me</button>
+                  <button type="button" class="btn btn-primary col-lg-offset-2 text-center" data-toggle="modal" data-target="#list_me">List Me</button>
                 </div>
             </div>
         </div>
