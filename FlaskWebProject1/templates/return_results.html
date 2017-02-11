@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<h1 id="homeHeading">Search For</h1>
+
+<form class="" role="form" id = "search_form"
+      action="/db_lookup" method="post">
+	<div class="form-group">
+      <input class="form-control col-md-7" type="text" name="skill" style="color: black">
+	</div>
+	<br />
+	<br />
+	<div class="form-group">
+	 <select class="form-control col-md-5" name = "category">
+		  <optgroup label = "How Do You Want To Learn?">
+			<option value = "teach">I want to be taught </option>
+			<option value = "prac">I want to practice </option>
+			<option value = "talk">I want to talk about it </option>
+		  </optgroup>
+	  </select>
+	</div>
+	<br /><br />
+</form>
+<input type="button" class="btn btn-xl btn-primary" value="Go!"
+    onclick="document.getElementById('search_form').submit();">
+{% endblock %}
+
+{% block content %}
+{% if results %}
+<section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12  text-center">
+                    <h2 class="section-heading">Results</h2>
+                    <hr class="primary">
+                      {{results}}
+                    <ul class="list-group">
+					  <li class="list-group-item">
+						<div>
+						</div>
+					  </li>
+        </ul>
+        </div>
+			</div>
+		</div>
+	</section>
+
+{% endif %}
+{% endblock %}

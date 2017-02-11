@@ -1,33 +1,75 @@
 {% extends "layout.html" %}
-
-{% block content %}
-
-<div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Python Tools for Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
-</div>
-
+{% block header %}
+	<h1 id="homeHeading">SkillShop at CMU</h1>
+	<hr>
+  <p>Got something you want to learn? Something you want to teach? Trade your expertise!</p>
+	<a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
 {% endblock %}
+{% block content %}
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Advance the spread of information</h2>
+                    <hr class="light">
+                    <p class="text-faded">Always wanting to learn more? Struggling to find people to connect with about your passions? Use SkillShop to find other CMU student with whom to share your love of learning!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   	<section id="offer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">List Me</h2>
+                    <hr class="primary">
+                    <p>Got a skill you want to share? Let the world know about it!</p>
+					<button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#list_me">List Me</button>
+                </div>
+
+            </div>
+       </div>
+    </section>
+
+<div id="list_me" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog modal-md" role="document">
+			<div class="modal-content">
+				 <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Skill Submisstion</h4>
+				</div>
+				<div class="modal-body">
+					<form id="login_form" class="form-horizontal" role="form"
+						action="/db_add" method="post">
+						<div class="form-group">
+							<label class="control-label col-md-2" for="andrewID">andrewID:</label>
+							<div class="col-md-10">
+							<input id="andrewID" type="text" name="andrewID" class="form-control" required>
+						</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="skill">Skill:</label>
+							<div class="col-md-10">
+							<input id="skill" type="text" name="skill" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="skill">I want to: </label>
+							<div class="col-md-10" style="margin-top: 6px;">
+								<input type="checkbox" name="teach"> Teach<br />
+								<input style="margin-top:12px; margin-bottom:12px;" type="checkbox" name="help_others"> Help Others Practice<br />
+								<input type="checkbox" name="have_conversation"> Have a Conversation<br />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  <input type="button" class="btn btn-primary" value="List Me!"
+					onclick="document.getElementById('login_form').submit();">
+			  </div>
+			</div>
+	  </div>
+	</div>
+{% endblock content %}
