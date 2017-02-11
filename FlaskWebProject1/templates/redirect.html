@@ -1,12 +1,19 @@
 {% extends "layout.html" %}
 {% block header %}
-	<h1 id="homeHeading">Thank you for Submitting!</h1>
-	<hr>
-	<p>You've been added to our database!</p>
-	<a href="/db_lookup" class="btn btn-primary btn-xl page-scroll">Search Database</a><br />
-	<a href="/" class="btn btn-primary btn-xl page-scroll">Return to the Home Page</a>
+<header>
+	<div class="header-content">
+		<div class="header-content-inner">
+			<h1 id="homeHeading">Thank you for Submitting!</h1>
+			<hr>
+			<p>You've been added to our database!</p>
+			<a href="/db_lookup" class="btn btn-primary btn-xl page-scroll">Search Database</a><br />
+			<a href="/" class="btn btn-primary btn-xl page-scroll">Return to the Home Page</a>
+		</div>
+	</div>
+</header>
 {% endblock %}
-<!--{% block content %}
+
+{% block content %}
 	 <section id="contact">
         <div class="container">
             <div class="row">
@@ -25,6 +32,5 @@
                 </div>
             </div>
         </div>
-        </section>
-        !-->
+	</section>
 {% endblock %}
