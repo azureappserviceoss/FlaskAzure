@@ -3,43 +3,53 @@
 {% block header %}
 <h1 id="homeHeading">Search For</h1>
 
-<form class="form-horizontal" role="form" id = "search_form"
+<form class="" role="form" id = "search_form"
       action="/db_lookup" method="post">
-      <input type = "text" name = "skill" style = "color: black">
-      <select>
-      <optgroup label = "How Do You Want To Learn?">
-        <option value = 0>I want to be taught </option>
-        <option value = 1>I want to practice </option>
-        <option value = 2>I want to talk about it </option>
-      </optgroup>
-    </select>
+	<div class="form-group">
+      <input class="form-control col-md-7" type="text" name="skill" style="color: black">
+	</div>
+	<br />
+	<br />
+	<div class="form-group">
+	 <select class="form-control col-md-5">
+		  <optgroup label = "How Do You Want To Learn?">
+			<option value = 0>I want to be taught </option>
+			<option value = 1>I want to practice </option>
+			<option value = 2>I want to talk about it </option>
+		  </optgroup>
+	  </select>
+	</div>
+	<br /><br />
 </form>
-<input type="button" class="btn btn-primary" value="Go!"
+<input type="button" class="btn btn-xl btn-primary" value="Go!"
     onclick="document.getElementById('search_form').submit();">
 {% endblock %}
 
 {% block content %}
 {% if results %}
 <section id="contact">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 text-center">
-				<h2 class="section-heading">Results</h2>
-				
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12  text-center">
+                    <h2 class="section-heading">Results</h2>
+                    <hr class="primary">
+					
+					
+					<ul class="list-group">
+					{% for user in results %}
+					  <li class="list-group-item">
+						<div>
+							{{ user.name }}<br />
+							<span style="text-weight:bold;">{{ user.department}}</span>,
+							<span style="text-transform:italic;">{{ user.student_level }}</span>
+						</div>
+					  </li>
+					{% endfor %}
+					</ul>
+                </div>
 			</div>
-			<ul class="list-group">
-			{% for user in results %}
-			  <li class="list-group-item">
-				<div>
-					{{ user.name }}<br />
-					<span style="text-weight:bold;">{{ user.department}}</span>,
-					<span style="text-transform:italic;">{{ user.student_level }}</span>
-				</div>
-			  </li>
-			{% endfor %}
-			</ul>
 		</div>
-	</div>
-</section>
+	</section>
+
 {% endif %}
 {% endblock %}
