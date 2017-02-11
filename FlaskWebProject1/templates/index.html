@@ -5,7 +5,6 @@
 	<p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
 	<a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
 {% endblock %}
-
 {% block content %}
     <section class="bg-primary" id="about">
         <div class="container">
@@ -159,6 +158,20 @@
             </div>
         </div>
     </section>
+	
+	<section id="offer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">List Me</h2>
+                    <hr class="primary">
+                    <p>Got a skill you want to share? Let the world know about it!</p>
+					<button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#list_me">List Me</button>
+                </div>
+                
+            </div>
+       </div>
+    </section>
 
     <section id="contact">
         <div class="container">
@@ -220,18 +233,4 @@
 			</div>
 	  </div>
 	</div>
-
-    <section id="offer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">List Me</h2>
-                    <hr class="primary">
-                    <p>Got a skill you want to share? Let the world know about it!</p>
-                  </div>
-                  <button type="button" class="btn btn-primary col-lg-offset-2 text-center" data-toggle="modal" data-target="#list_me">List Me</button>
-                </div>
-            </div>
-        </div>
-    </section>
 {% endblock content %}
