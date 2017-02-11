@@ -12,43 +12,51 @@ from FlaskWebProject1 import app
 database = [{},{},{}] #Convention: teach := 0 | practice := 1 | conversation := 2
 
 # Intakes a post request with a name, a skill, and a list of categories.
-@app.route('/db_add', methods = ['POST'])
+@app.route('/db_add', methods = ['GET', 'POST'])
 def db_add():
-  name = request.form.get('andrewID')
-  skill = request.form.get('skill')
-  teach = request.form.get('teach')
-  prac = request.form.get('help_others')
-  con = request.form.get('have_conversation')
-  categories = []
-  if (teach != None):
-    categories.append(0);
-  if (prac != None):
-    categories.append(1);
-  if (con != None):
-    categories.append(2);
+  if request.method == 'POST':
+    name = request.form.get('andrewID')
+    skill = request.form.get('skill')
+    teach = request.form.get('teach')
+    prac = request.form.get('help_others')
+    con = request.form.get('have_conversation')
+    categories = []
+    if (teach != None):
+      categories.append(0);
+    if (prac != None):
+      categories.append(1);
+    if (con != None):
+      categories.append(2);
 
-  for cat in categories:
-    if(database[cat].get(skill) != None):
-      database[cat].get(skill).add(name)
-    else:
-      database[cat][skill] = set()
-      database[cat][skill].add(name)
-  print(database)
-  return redirect()
-  
-@app.route('/db_add', methods = ['GET'])
-def db_get():
-  return render_template(
+    for cat in categories:
+      if(database[cat].get(skill) != None):
+        database[cat].get(skill).add(name)
+      else:
+        database[cat][skill] = set()
+        database[cat][skill].add(name)
+    print(database)
+    return redirect()
+  else:
+    return render_template(
       'redirect.html',
   )
 
 # Intake a post request with a skill and a category, and return a list of
 # andrewids that are offering that
-@app.route('/db_lookup', methods =  ['POST'])
+@app.route('/db_lookup', methods =  ['GET', 'POST'])
 def db_lookup():
-  skill = request.form.get('skill')
-  cat = request.form.get('category')
-  return jsonify (list(database[cat].get(skill)))
+  if request.method == 'POST':
+    skill = request.form.get('skill')
+    cat = request.form.get('category')
+    return render_template(
+      '.html',
+      results=jsonify (list(database[cat].get(skill))),
+    )
+  else:
+    return render_template(
+      '.html',
+      results=None,
+    )
 
 ##############################################################################
 #                             Flask Page Runners                             #
