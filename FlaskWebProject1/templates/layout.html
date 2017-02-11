@@ -51,15 +51,6 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                    <li>
                       <a class="page-scroll" href="#offer">Offer</a>
                     </li>
                 </ul>
@@ -68,13 +59,19 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-     
-	{% block header %}
-	{% endblock %}
-	
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                {% block header %}
+				{% endblock %}
+            </div>
+        </div>
+    </header>
+
 	{% block content %}
 	{% endblock %}
-	
+
 	<!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
 
