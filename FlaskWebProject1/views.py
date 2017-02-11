@@ -49,12 +49,12 @@ def db_lookup():
     skill = request.form.get('skill')
     cat = request.form.get('category')
     return render_template(
-      '.html',
+      'return_results.html',
       results=jsonify (list(database[cat].get(skill))),
     )
   else:
     return render_template(
-      '.html',
+      'return_results.html',
       results=None,
     )
 
