@@ -11,11 +11,11 @@
 	<br />
 	<br />
 	<div class="form-group">
-	 <select class="form-control col-md-5">
+	 <select class="form-control col-md-5" name = "category">
 		  <optgroup label = "How Do You Want To Learn?">
-			<option value = 0>I want to be taught </option>
-			<option value = 1>I want to practice </option>
-			<option value = 2>I want to talk about it </option>
+			<option value = "teach">I want to be taught </option>
+			<option value = "prac">I want to practice </option>
+			<option value = "talk">I want to talk about it </option>
 		  </optgroup>
 	  </select>
 	</div>
@@ -33,20 +33,14 @@
                 <div class="col-lg-12  text-center">
                     <h2 class="section-heading">Results</h2>
                     <hr class="primary">
-					
-					
-					<ul class="list-group">
-					{% for user in results %}
+                      {{results}}
+                    <ul class="list-group">
 					  <li class="list-group-item">
 						<div>
-							{{ user.name }}<br />
-							<span style="text-weight:bold;">{{ user.department}}</span>,
-							<span style="text-transform:italic;">{{ user.student_level }}</span>
 						</div>
 					  </li>
-					{% endfor %}
-					</ul>
-                </div>
+        </ul>
+        </div>
 			</div>
 		</div>
 	</section>

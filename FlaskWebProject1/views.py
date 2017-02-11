@@ -3,8 +3,9 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template, g, Flask, jsonify, request
+from flask import render_template, g, Flask, request
 from FlaskWebProject1 import app
+import json
 
 ###############################################################################
 #                                 Database Functions                          #
@@ -47,11 +48,25 @@ def db_add():
 def db_lookup():
   if request.method == 'POST':
     skill = request.form.get('skill')
-    cat = request.form.get('category')
+    t_cat = request.form.get('category')
+    cat = -1
+    if (t_cat == "teach"):
+      cat = 0
+    elif (t_cat == "prac"):
+      cat = 1
+    elif (t_cat == "talk"):
+      cat = 2
+
+    if (database[cat].get(skill) == None):
+      return render_template(
+        'return_results.html'
+        )
+
+    jsoned  = json.dumps (list(database[cat].get(skill)))
+    print(jsoned)
     return render_template(
       'return_results.html',
-      results=jsonify (list(database[cat].get(skill))),
-    )
+      results = jsoned    )
   else:
     return render_template(
       'return_results.html',
