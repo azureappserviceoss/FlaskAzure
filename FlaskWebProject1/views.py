@@ -11,21 +11,30 @@ from FlaskWebProject1 import app
 ###############################################################################
 database = [{},{},{}] #Convention: teach := 0 | practice := 1 | conversation := 2
 
-
-
 # Intakes a post request with a name, a skill, and a list of categories.
 @app.route('/db_add', methods = ['POST'])
 def db_add():
-  name = request.form.get('name')
+  name = request.form.get('andrewID')
   skill = request.form.get('skill')
-  categories = request.form.get('categories')
+  teach = request.form.get('teach')
+  prac = request.form.get('help_others')
+  con = request.form.get('have_conversation')
+  categories = []
+  if (teach != None):
+    categories.append(0);
+  if (prac != None):
+    categories.append(1);
+  if (con != None):
+    categories.append(2);
+
   for cat in categories:
     if(database[cat].get(skill) != None):
-      database[cat] = database[cat].get(skill).append(name)
+      database[cat].get(skill).add(name)
     else:
-      database[cat][skill] = [name]
+      database[cat][skill] = set()
+      database[cat][skill].add(name)
   print(database)
-  return jsonify ("Success");
+  return redirect()
 
 # Intake a post request with a skill and a category, and return a list of
 # andrewids that are offering that
@@ -33,7 +42,7 @@ def db_add():
 def db_lookup():
   skill = request.form.get('skill')
   cat = request.form.get('category')
-  return jsonify (database[cat].get(skill))
+  return jsonify (list(database[cat].get(skill)))
 
 ##############################################################################
 #                             Flask Page Runners                             #
@@ -67,3 +76,9 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
+def redirect():
+  return render_template(
+      "redirect.html",
+      year = datetime.now().year,
+      message = 'Thank you for your submission!'
+      )
