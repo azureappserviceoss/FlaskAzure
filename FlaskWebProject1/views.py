@@ -35,6 +35,12 @@ def db_add():
       database[cat][skill].add(name)
   print(database)
   return redirect()
+  
+@app.route('/db_add', methods = ['GET'])
+def db_get():
+  return render_template(
+      'redirect.html',
+  )
 
 # Intake a post request with a skill and a category, and return a list of
 # andrewids that are offering that
