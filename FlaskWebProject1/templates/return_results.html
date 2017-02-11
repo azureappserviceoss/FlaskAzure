@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
-{% block header %}
 
+{% block header %}
 <h1 id="homeHeading">Search For</h1>
 
 <form class="form-horizontal" role="form" id = "search_form"
@@ -16,4 +16,30 @@
 </form>
 <input type="button" class="btn btn-primary" value="Go!"
     onclick="document.getElementById('search_form').submit();">
+{% endblock %}
+
+{% block content %}
+{% if results %}
+<section id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<h2 class="section-heading">Results</h2>
+				
+			</div>
+			<ul class="list-group">
+			{% for user in results %}
+			  <li class="list-group-item">
+				<div>
+					{{ user.name }}<br />
+					<span style="text-weight:bold;">{{ user.department}}</span>,
+					<span style="text-transform:italic;">{{ user.student_level }}</span>
+				</div>
+			  </li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% endif %}
 {% endblock %}
