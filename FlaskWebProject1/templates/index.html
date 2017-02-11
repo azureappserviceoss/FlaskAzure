@@ -262,12 +262,12 @@
 					<h4 class="modal-title">Modal title</h4>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal" role="form" 
+					<form id="login_form" class="form-horizontal" role="form" 
 						action="/db_add" method="post">
 						<div class="form-group">
 							<label class="control-label col-md-2" for="andrewID">andrewID:</label>
 							<div class="col-md-10">
-							<input id="andrewID" type="text" name="name" class="form-control" required>
+							<input id="andrewID" type="text" name="andrewID" class="form-control" required>
 						</div>
 						</div>
 						<div class="form-group">
@@ -294,7 +294,8 @@
 				</div>
 				<div class="modal-footer">
 				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<input type="button" class="btn btn-primary" value="Save Changes"
+					onclick="document.getElementById('login_form').submit();">
 			  </div>
 			</div>
 	  </div>
